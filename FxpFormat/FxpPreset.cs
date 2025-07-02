@@ -5,7 +5,7 @@
     public class FxpPreset
     {
         public FxpHeader Header { get; set; } = new FxpHeader();
-        public PresetData PresetData { get; set; } = new PresetData();
+        public FxpPresetData PresetData { get; set; } = new FxpPresetData();
 
         private const int HeaderFixedSize = 4 + 4 + 4 + 4 + 4 + 4 + 4 + 32; // 60 bytes
 

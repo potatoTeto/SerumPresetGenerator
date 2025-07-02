@@ -3,7 +3,7 @@
     using System;
     using System.IO;
 
-    public class PresetData
+    public class FxpPresetData
     {
         public byte[] RawData { get; set; } = Array.Empty<byte>();
 
