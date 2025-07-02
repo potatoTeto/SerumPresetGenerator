@@ -51,8 +51,7 @@ Generated `.fxp` files may or may not load properly in Serum depending on the co
 
 The file format documentation available in this project's wiki is a **work in progress** based solely on independent analysis of publicly available `.fxp` files.
 
-You can view the current format documentation here:  
-[https://github.com/potatoTeto/SerumPresetGenerator/wiki/Serum-.fxp-File-Format-Documentation](https://github.com/potatoTeto/SerumPresetGenerator/wiki/Serum-.fxp-File-Format-Documentation)
+You can view the current format documentation here: https://github.com/potatoTeto/SerumPresetGenerator/wiki/Serum-.fxp-File-Format-Documentation
 
 No guarantees are made regarding its completeness or accuracy. This information is shared publicly to encourage collaboration and community contributions to better understand the format.
 
