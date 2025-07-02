@@ -7,6 +7,11 @@
     public class FxpHeader
     {
         public string ChunkID { get; private set; } = "CcnK";
+        /// <summary>
+        /// Size field from Serum FXP file header.
+        /// Note: In Serum files, this represents total file size including header bytes,
+        /// not just chunk data length as per standard FXP spec.
+        /// </summary>
         public int ChunkSize { get; set; }
         public string ChunkType { get; private set; } = "FPCh";
         public int Version { get; private set; } = 1;
@@ -60,7 +65,7 @@
         {
             bw.Write(Encoding.ASCII.GetBytes(ChunkID));
 
-            // Calculate chunk size dynamically when saving, so must be set by caller before WriteTo
+            // ChunkSize is total file size including these 8 bytes
             var sizeBytes = BitConverter.GetBytes(ChunkSize);
             if (BitConverter.IsLittleEndian) Array.Reverse(sizeBytes);
             bw.Write(sizeBytes);

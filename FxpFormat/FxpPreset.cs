@@ -16,9 +16,8 @@
 
             Header.ReadFrom(br);
 
-            int dataLength = Header.ChunkSize - (HeaderFixedSize - 8);
-            // subtract 8 because ChunkSize excludes first 8 bytes (ChunkID + ChunkSize field itself)
-            // HeaderFixedSize includes ChunkID + ChunkSize fields, so subtract 8 here
+            int dataLength = Header.ChunkSize - HeaderFixedSize;
+            // ChunkSize is total file size, subtract header size to get preset data length
 
             if (dataLength < 0)
                 throw new InvalidDataException("Invalid chunk size or header size");
@@ -31,12 +30,11 @@
             using var fs = File.Create(path);
             using var bw = new BinaryWriter(fs);
 
-            // Calculate chunk size = all fields except the first 8 bytes (ChunkID + ChunkSize)
-            Header.ChunkSize = HeaderFixedSize - 8 + (PresetData?.RawData?.Length ?? 0);
+            // ChunkSize = total file size = header + preset data
+            Header.ChunkSize = HeaderFixedSize + (PresetData?.RawData?.Length ?? 0);
 
             Header.WriteTo(bw);
             PresetData.WriteTo(bw);
         }
     }
-
 }
