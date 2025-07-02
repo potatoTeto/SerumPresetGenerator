@@ -1,5 +1,6 @@
 ﻿namespace SerumPresetGenerator
 {
+    using SerumPresetGenerator.FxpFormat;
     using System;
 
     class Program
@@ -9,7 +10,7 @@
             string filePath = "example.fxp";
 
             // Create a new preset
-            var preset = new SerumFxpPreset();
+            var preset = new FxpPreset();
             preset.Header.PresetName = "My Test Preset";
 
             // Fill PresetData with dummy bytes (for example purposes)
@@ -22,7 +23,7 @@
             Console.WriteLine($"Saved preset '{preset.Header.PresetName}' with {preset.PresetData.RawData.Length} bytes of data.");
 
             // Load it back
-            var loadedPreset = new SerumFxpPreset();
+            var loadedPreset = new FxpPreset();
             loadedPreset.Load(filePath);
 
             Console.WriteLine($"Loaded preset '{loadedPreset.Header.PresetName}' with {loadedPreset.PresetData.RawData.Length} bytes of data.");

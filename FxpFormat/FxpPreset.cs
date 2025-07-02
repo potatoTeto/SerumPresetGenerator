@@ -1,11 +1,11 @@
-﻿namespace SerumPresetGenerator
+﻿namespace SerumPresetGenerator.FxpFormat
 {
     using System.IO;
 
-    public class SerumFxpPreset
+    public class FxpPreset
     {
         public FxpHeader Header { get; set; } = new FxpHeader();
-        public SerumPresetData PresetData { get; set; } = new SerumPresetData();
+        public PresetData PresetData { get; set; } = new PresetData();
 
         private const int HeaderFixedSize = 4 + 4 + 4 + 4 + 4 + 4 + 4 + 32; // 60 bytes
 
@@ -32,7 +32,7 @@
             using var bw = new BinaryWriter(fs);
 
             // Calculate chunk size = all fields except the first 8 bytes (ChunkID + ChunkSize)
-            Header.ChunkSize = (HeaderFixedSize - 8) + (PresetData?.RawData?.Length ?? 0);
+            Header.ChunkSize = HeaderFixedSize - 8 + (PresetData?.RawData?.Length ?? 0);
 
             Header.WriteTo(bw);
             PresetData.WriteTo(bw);

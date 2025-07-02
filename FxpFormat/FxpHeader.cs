@@ -1,4 +1,4 @@
-﻿namespace SerumPresetGenerator
+﻿namespace SerumPresetGenerator.FxpFormat
 {
     using System;
     using System.IO;

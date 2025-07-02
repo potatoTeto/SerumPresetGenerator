@@ -1,9 +1,9 @@
-﻿namespace SerumPresetGenerator
+﻿namespace SerumPresetGenerator.FxpFormat
 {
     using System;
     using System.IO;
 
-    public class SerumPresetData
+    public class PresetData
     {
         public byte[] RawData { get; set; } = Array.Empty<byte>();
 
